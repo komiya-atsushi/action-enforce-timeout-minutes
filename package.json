@@ -7,7 +7,7 @@
     "build": "tsc",
     "format": "prettier --write **/*.ts",
     "lint": "eslint src/**/*.ts",
-    "package": "ncc build",
+    "package": "ncc build --source-map --license licenses.txt",
     "all": "npm run build && npm run package"
   },
   "repository": {
