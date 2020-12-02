@@ -1,0 +1,8 @@
+name: 'Enforce timeout-minutes'
+description: 'Enforces setting timeout-minutes of the workflow jobs to prevent waste of minutes quota'
+outputs:
+  message:
+    description: 'The result message'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
