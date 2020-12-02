@@ -1,0 +1,17 @@
+name: Self check
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Self check
+        id: enforces-timeout-minutes
+        uses: ./
