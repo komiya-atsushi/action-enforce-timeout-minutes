@@ -41,12 +41,12 @@ function validate(jobs: Jobs): JobValidationResult[] | null {
     }
 
     if (job['timeout-minutes'] === void 0) {
-      result.push({jobId, name: job.name, reason: 'not defined'});
+      result.push({ jobId, name: job.name, reason: 'not defined' });
       continue;
     }
 
     if (typeof job['timeout-minutes'] !== 'number') {
-      result.push({jobId, name: job.name, reason: 'not a number'});
+      result.push({ jobId, name: job.name, reason: 'not a number' });
     }
   }
 
@@ -59,7 +59,7 @@ async function run(): Promise<void> {
     const globber = await glob.create(exts.map((ext) => `.github/workflows/**/*${ext}`).join('\n'));
     const workflowFiles = await globber.glob();
 
-    const resultMessage: string[] = []
+    const resultMessage: string[] = [];
 
     for (const path of workflowFiles) {
       const filename = path.substring(path.lastIndexOf('.github/workflows/'));
@@ -86,9 +86,10 @@ async function run(): Promise<void> {
       }
 
       for (const jobResult of jobResults) {
-        const message = jobResult.reason === 'not defined'
-          ? `[${filename} :: ${jobResult.jobId}] Property "timeout-minutes" does not exist.`
-          : `[${filename} :: ${jobResult.jobId}] Value of the property "timeout-minutes" is not a number.`;
+        const message =
+          jobResult.reason === 'not defined'
+            ? `[${filename} :: ${jobResult.jobId}] Property "timeout-minutes" does not exist.`
+            : `[${filename} :: ${jobResult.jobId}] Value of the property "timeout-minutes" is not a number.`;
         core.error(message);
         resultMessage.push(message);
       }
@@ -101,7 +102,7 @@ async function run(): Promise<void> {
       core.setFailed(`${resultMessage.length} violation${resultMessage.length > 0 ? 's' : ''} found.`);
     }
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed(error.message);
   }
 }
 
