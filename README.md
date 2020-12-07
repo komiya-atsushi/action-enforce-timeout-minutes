@@ -12,7 +12,7 @@ name: Enforce timeout-minutes
 on: push
 
 jobs:
-  test:
+  enforce-timeout-minutes:
     runs-on: ubuntu-latest
     timeout-minutes: 2
 
@@ -20,9 +20,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Self check
-        id: enforces-timeout-minutes
-        uses: komiya-atsushi/action-enforce-timeout-minutes@v1
+      - name: Enforce timeout-minutes
+        uses: komiya-atsushi/action-enforce-timeout-minutes@v1.0.0
 ```
 
 # License
