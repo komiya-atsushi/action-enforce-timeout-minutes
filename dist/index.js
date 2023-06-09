@@ -46,6 +46,9 @@ function validate(jobs) {
         if (!job) {
             continue;
         }
+        if (job.uses) {
+            continue;
+        }
         if (job['timeout-minutes'] === void 0) {
             result.push({ jobId, name: job.name, reason: 'not defined' });
             continue;

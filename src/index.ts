@@ -5,6 +5,7 @@ import * as glob from '@actions/glob';
 
 interface Job {
   name?: string;
+  uses?: any;
   'timeout-minutes'?: number;
 }
 
@@ -37,6 +38,10 @@ function validate(jobs: Jobs): JobValidationResult[] | null {
 
   for (const [jobId, job] of Object.entries(jobs)) {
     if (!job) {
+      continue;
+    }
+
+    if (job.uses) {
       continue;
     }
 
