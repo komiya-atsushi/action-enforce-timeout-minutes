@@ -28,7 +28,7 @@ async function parseYaml(filename: string): Promise<ActionsWorkflow | null> {
   try {
     return yaml.parse(await fs.promises.readFile(filename, 'utf8')) as ActionsWorkflow;
   } catch (e) {
-    core.debug(e);
+    core.debug(String(e));
     return null;
   }
 }
@@ -107,7 +107,8 @@ async function run(): Promise<void> {
       core.setFailed(`${resultMessage.length} violation${resultMessage.length > 0 ? 's' : ''} found.`);
     }
   } catch (error) {
-    core.setFailed(error.message);
+    const msg = typeof error === 'object' && error !== null && 'message' in error ? error.message : error;
+    core.setFailed(String(msg));
   }
 }
 
