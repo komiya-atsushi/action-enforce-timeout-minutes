@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Enforce timeout-minutes
-        uses: komiya-atsushi/action-enforce-timeout-minutes@v1.0.0
+        uses: komiya-atsushi/action-enforce-timeout-minutes@v1
 ```
 
 # License
