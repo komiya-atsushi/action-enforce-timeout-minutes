@@ -5,7 +5,7 @@ import * as glob from '@actions/glob';
 
 interface Job {
   name?: string;
-  uses?: any;
+  uses?: unknown;
   'timeout-minutes'?: number;
 }
 
