@@ -1,6 +1,6 @@
 {
   "name": "action-enforce-timeout-minutes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enforces setting timeout-minutes of the workflow jobs to prevent waste of minutes quota.",
   "main": "lib/index.js",
   "scripts": {
